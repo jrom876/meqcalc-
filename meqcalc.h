@@ -3,9 +3,9 @@
 #define MEQCALC_H
 
 /**
-	Copyright (C) 2024 
-	Jacob Romero, ERI Group, LLC
-	jromero@erigroup.com
+	Copyright (C) 2023 
+	Jacob Romero, Creative Engineering Solutions, LLC
+	cesllc876@gmail.com
 **/
 
 double totalMassInSolOneElement (double conc, double solVolume, double mMass, int valence);
