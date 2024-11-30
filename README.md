@@ -1,4 +1,4 @@
-Code to calculate meq of compounds in H2O.
+Code to calculate the milliequivalent concentration of various compounds in H2O.
 
 	References:	
 		https://sciencing.com/calculate-milliequivalent-5009675.html
