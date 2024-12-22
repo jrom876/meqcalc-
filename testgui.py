@@ -45,7 +45,7 @@ MOL_WEIGHT 	= 0
 VALENCE 	= 0
 TVALENCE 	= 0
 
-## Lists of Molecular Weights and Valences of Elements
+## Lists of Molecular Weights and Valences of first 20 Elements
 H	= [1.008, 1]
 He 	= [4.026, 2]
 Li	= [6.94, 1]
