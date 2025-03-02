@@ -1,4 +1,4 @@
-Code to calculate the milliequivalent concentration of various compounds in H2O.
+Code to calculate solute and solvent sample sizes to achieve specific milliequivalent concentrations of various compounds in H2O.
 
 	References:	
 		https://sciencing.com/calculate-milliequivalent-5009675.html
