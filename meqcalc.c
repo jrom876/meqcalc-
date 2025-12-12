@@ -26,7 +26,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include "meqcalc.h"
-#include "ptableDefines.h"
+//~ #include "ptableDefines.h"
 //~ #include <check.h>
 
 /// STANDARD DEFINITIONS FOR PROJECT SCICALC 
@@ -67,7 +67,19 @@ double getConcentrationInMeq2Elements (double msolute, double solVolume, double 
 /// mEq/L = [(mass*valence)/Molecular Weight]/volume of solvent
 double getMassOfNaCl (double goal, double solVolume) {
 	int valence = 2;
-	double molWeight = SODIUM + CHLORINE;
+	//double molWeight = SODIUM_MASS + CHLORINE_MASS;
+	double molWeight = Na[0] + Cl[0];
+	//~ printf("\nMolecular Weight:\t\t\t%0.6lf grams/mole\n",molWeight);
+	double mNaCl = (goal*solVolume*molWeight)/valence;
+	printf("NaCl\t%.4lf mEq\t%0.4lf L H2O = \t%0.6lf mg\n",goal, solVolume, mNaCl);
+	return mNaCl;	
+}
+
+/// mEq/L = [(mass*valence)/Molecular Weight]/volume of solvent
+double getMassOfElm (double goal, double solVolume) {
+	int valence = 2;
+	//double molWeight = SODIUM_MASS + CHLORINE_MASS;
+	double molWeight = Na[0] + Cl[0];
 	//~ printf("\nMolecular Weight:\t\t\t%0.6lf grams/mole\n",molWeight);
 	double mNaCl = (goal*solVolume*molWeight)/valence;
 	printf("NaCl\t%.4lf mEq\t%0.4lf L H2O = \t%0.6lf mg\n",goal, solVolume, mNaCl);
@@ -94,17 +106,15 @@ double getmass_given_percent (double percent, int valence, double el1, double el
 	return mass;	
 }
 
-/** MAIN **/
-
-int main(int argc, char const *argv[]) {
-	////~ totalMassInSolOneElement(78.2*MILLI, 0.75, POTASSIUM, 1);
-	////~ getConcentrationInMeq2Elements(30*MILLI, 0.4, SODIUM, CHLORINE, 2);
-	////~ getMassOfNaCl(2.567, 0.4);
-	getPercent (30.8, 2, SODIUM, CHLORINE);
-	getmass_given_percent (0.9, 2, SODIUM, CHLORINE);
+void runnit (double elm1[], double elm2[]) {
+	double goal = elm1[0] + elm2[0];
+		
+	getPercent (30.8, 2, elm1[0], elm2[0]);
+	getmass_given_percent (0.9, 2, elm1[0], elm2[0]);
 	
 	for (double g = 100; g<155; g=g+5) {
-		double mNaCl = getMassOfNaCl(g, 0.025);
+		//double mNaCl = getMassOfNaCl(g, 0.025);
+		getMassOfNaCl(g, 0.025);
 	}
 	printf("\n");
 	
@@ -114,7 +124,39 @@ int main(int argc, char const *argv[]) {
 	printf("\n");
 	
 	for (double g = 100; g<155; g=g+5) {
-		double mNaCl = getMassOfNaCl(g, 0.5);
+		//double mNaCl = getMassOfNaCl(g, 0.5);
+		getMassOfNaCl(g, 0.5);
+	};
+}
+
+/** MAIN **/
+
+int main(int argc, char const *argv[]) {
+	////~ totalMassInSolOneElement(78.2*MILLI, 0.75, POTASSIUM, 1);
+	////~ getConcentrationInMeq2Elements(30*MILLI, 0.4, SODIUM, CHLORINE, 2);
+	////~ getMassOfNaCl(2.567, 0.4);
+	
+	//getPercent (30.8, 2, SODIUM_MASS, CHLORINE_MASS);
+	//getmass_given_percent (0.9, 2, SODIUM_MASS, CHLORINE_MASS);
+	
+	getPercent (30.8, 2, Na[0], Cl[0]);
+	getmass_given_percent (0.9, 2, Na[0], Cl[0]);
+	
+	for (double g = 100; g<155; g=g+5) {
+		//double mNaCl = getMassOfNaCl(g, 0.025);
+		getMassOfNaCl(g, 0.025);
 	}
+	printf("\n");
+	
+	for (double g = 100; g<155; g=g+5) {
+		getMassOfNaCl(g, 0.25);
+	}
+	printf("\n");
+	
+	for (double g = 100; g<155; g=g+5) {
+		//double mNaCl = getMassOfNaCl(g, 0.5);
+		getMassOfNaCl(g, 0.5);
+	}
+	
 	return 0;
  }
